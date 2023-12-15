@@ -1,6 +1,9 @@
 import dynamic from "next/dynamic";
 import React from "react";
 
+import EventsExample from "../../components/events"
+
+// Mapを呼び出す
 export default function MapPage() {
     const Map = React.useMemo(
         () =>
@@ -10,5 +13,12 @@ export default function MapPage() {
         }),
         []
     );
-    return <Map />
+    return (
+        <div>
+            <Map />
+            
+            EventsExample
+            <EventsExample />
+        </div>
+    )
 }
