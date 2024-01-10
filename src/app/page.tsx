@@ -41,14 +41,19 @@ export default function Home() {
 
       <br></br>
 
-      <div className="mb-32 grid text-center">
+{/* GoogleMapの表示 */}
+      {/* <div className="mb-32 grid text-center">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1770.7688552730604!2d141.13673686877414!3d39.7995740016396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f85731c6547552b%3A0xd1a5faa6b4e8ba59!2z5rud5rKi5biCSVBV44Kk44OO44OZ44O844K344On44Oz44K744Oz44K_44O8!5e0!3m2!1sja!2sjp!4v1702455851174!5m2!1sja!2sjp"width="600" height="450" loading="lazy"></iframe>
+      </div> */}
+
+{/* LeafletによりOpenMapを表示 */}
+      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 md:w-full sm:w-full">
+      {/* <iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=141.13453924655917%2C39.799028508510965%2C141.1400216817856%2C39.8012664206461&amp;layer=mapnik"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=18/39.80015/141.13728">大きな地図を表示</a></small> */}
+      {/* <iframe className="lg:w-full lg:aspect-video lg:mb-0 md:w-full md:aspect-video sm:w-full sm:aspect-video aspect-square" src="https://www.openstreetmap.org/export/embed.html?bbox=141.13453924655917%2C39.799028508510965%2C141.1400216817856%2C39.8012664206461&amp;layer=mapnik"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=18/39.80015/141.13728">大きな地図を表示</a></small> */}
+        <iframe className="lg:w-full lg:aspect-video lg:mb-0 md:w-full md:aspect-video sm:w-full sm:aspect-video aspect-square" src="map-page"></iframe><br/><small><a href="map-page">大きな地図を表示</a></small>
       </div>
 
-      <div className="mb-32 grid text-center">
-      <iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=141.13453924655917%2C39.799028508510965%2C141.1400216817856%2C39.8012664206461&amp;layer=mapnik"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=18/39.80015/141.13728">大きな地図を表示</a></small>
-      </div>
-
+{/* 以下は正味不要 */}
       <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
         <a
           href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
