@@ -16,9 +16,7 @@ export default function MapPage() {
     );
     return (
         <div>
-            {/* <p><button onClick={currentPos}>現在地を取得する</button></p> */}
             <Map />
-            
         </div>
     )
 }
