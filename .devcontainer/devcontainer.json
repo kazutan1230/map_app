@@ -1,0 +1,21 @@
+{
+    "name": "map_app",
+    "build": {
+        "dockerfile": "../Dockerfile"
+    },
+    "forwardPorts": [3000],
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "biomejs.biome",
+          "Codeium.codeium",
+          "eamodio.gitlens",
+          "editorconfig.editorconfig",
+          "github.vscode-github-actions",
+          "GitHub.vscode-pull-request-github",
+          "ms-azuretools.vscode-docker",
+          "MS-vsliveshare.vsliveshare"
+        ]
+      }
+    }
+  }
