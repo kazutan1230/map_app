@@ -25,7 +25,8 @@ export function MarkerLabel({coods, str}:{ coods: LatLngExpression, str: string}
         <Popup>
           {str}
           <br />
-          <a href="map-page/test">テストリンク</a>
+          {/* <a href="map-page/test">テストリンク</a> */}
+          <a href="contents">aframeテストリンク</a>
         </Popup>
       </Marker>
     )
