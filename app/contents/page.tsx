@@ -1,24 +1,12 @@
 import React from "react";
 
-import dynamic from "next/dynamic";
-import AframeTest from "@/components/aframe/aframeTest"
-import PhotoTest from "@/components/aframe/photoTest"
-import MovieTest from "@/components/aframe/movieTest"
+import ViewVR from "@/components/aframe/viewVR";
 
-// Aframeページを呼び出す
-export default function ContentsPage() {
-    const MovieTest = dynamic(() => import("@/components/aframe/movieTest"), {
-        // const PhotoTest = dynamic(() => import("@/components/aframe/photoTest"), {
-            // const AframeTest = dynamic(() => import("@/components/map/aframeTest"), {
-            loading: () => <p>A content is loading</p>,
-        ssr: false,
-    })
-    
+// ViewVRを呼び出す
+export default function Content() {
     return (
         <div>
-            {/* <AframeTest /> */}
-            <PhotoTest />
-            {/* <MovieTest /> */}
+            <ViewVR />
         </div>
     )
 }

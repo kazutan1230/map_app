@@ -1,9 +1,8 @@
-"use client"
-
 import "leaflet/dist/leaflet.css";
 import React, { Component } from "react";
 import { LatLngExpression, LatLngTuple, map } from "leaflet";
-import { Popup, useMap, Marker } from "react-leaflet";
+import { Popup, Marker } from "react-leaflet";
+import ViewVR from "@/components/aframe/viewVR";
 
 import L from "leaflet";
 import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
@@ -25,8 +24,8 @@ export function MarkerLabel({coods, str}:{ coods: LatLngExpression, str: string}
         <Popup>
           {str}
           <br />
-          {/* <a href="map-page/test">テストリンク</a> */}
           <a href="contents">aframeテストリンク</a>
+          {/* <ViewVR /> */}
         </Popup>
       </Marker>
     )

@@ -1,10 +1,7 @@
-"use client"
-
 import "leaflet/dist/leaflet.css";
-import React, { Component } from "react";
+import React from "react";
 import { MarkerLabel } from "./markerLabel";
-import { LatLngExpression, LatLngTuple, map } from "leaflet";
-import { Popup, useMap, Marker } from "react-leaflet";
+
 
 export function MarkersInit() {
   // Markerを返すfunction
