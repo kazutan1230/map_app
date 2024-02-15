@@ -2,9 +2,8 @@
 
 import 'aframe'
 import { Entity, Scene } from 'aframe-react'
-import { init } from 'next/dist/compiled/webpack/webpack'
 import React, { FC } from 'react'
-
+// import { ShowContentNameConsole } from "@/components/parts/testModules"
 
 const PhotoTest:FC = () => {
     function handleClick() {
@@ -12,6 +11,7 @@ const PhotoTest:FC = () => {
     }
     // class PhotoTest extends Component {
     const [state, setState] = React.useState(false)
+    // ShowContentNameConsole()
 
     return (
         <>

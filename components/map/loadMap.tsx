@@ -8,6 +8,7 @@ export default function LoadMap() {
         dynamic(() => import("@/components/map/map"), {
             loading: () => <p>A map is loading</p>,
             ssr: false,
+            // loading.gif入れてグルグルさせたい。
         }),
         []
     )
