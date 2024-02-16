@@ -15,7 +15,7 @@ L.Icon.Default.mergeOptions({
   shadowUrl: markerShadow.src,
 })
 
-export function MarkerLabel({coods, str}:{ coods: LatLngExpression, str: string}) {
+export function MarkerLabel({coods, str, srcType }:{ coods: LatLngExpression, str: string , srcType: string })  {
   // Markerを返すfunction
     return (
       // <Marker position = {[35.658577, 139.745451]}>
@@ -23,7 +23,7 @@ export function MarkerLabel({coods, str}:{ coods: LatLngExpression, str: string}
         <Popup>
           {str}
           <br />
-          {MoveToContents("/contents", str)}
+          { MoveToContents("/contents", srcType) }
           {/* <a onClick={() => MoveToContents("/contents", str)} style={{cursor: "pointer"}}>コンテンツへ</a> */}
           {/* <a href="contents">aframeテストリンク</a> */}
         </Popup>
