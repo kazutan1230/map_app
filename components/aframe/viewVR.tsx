@@ -1,28 +1,28 @@
-"use client"
-import React, { ComponentType } from "react";
-import dynamic from "next/dynamic";
-import AframeTest from "@/components/aframe/aframeTest"
-// import PhotoTest from "@/components/aframe/photoTest"
-import MovieTest from "@/components/aframe/movieTest"
-// import { useRouter, usePathname, useSearchParams } from "next/navigation"
-import { useSearchParams } from "next/navigation"
-// import { GetContentName } from "@/components/parts/sendValues";
+import React, { ComponentType } from "react"
+import dynamic from "next/dynamic"
+
+type srcTypeProps = {
+    srcType: string
+}
 
 // Aframeページを呼び出す
-export default function ViewVR() {
+export default function ViewVR(props: srcTypeProps) {
     // sourceの種類を取得
-    const srcType = useSearchParams().get("srcType")
-    console.log("contentType=" + srcType)
+    const srcType = props.srcType
+
+    // console.log("contentType=" + props.srcType)
 
     // ViewContentに呼び出すcomponentを入れる
     let ViewContent:ComponentType
     
     if (srcType === "img") {
+        // imageファイル
         ViewContent = dynamic(() => import("@/components/aframe/photoTest"), {
             loading: () => <p>A content is loading</p>,
             ssr: false,
         })
     } else if (srcType === "movie") {
+        // movieファイル
         ViewContent = dynamic(() => import("@/components/aframe/movieTest"), {
             loading: () => <p>A content is loading</p>,
             ssr: false,
@@ -34,6 +34,7 @@ export default function ViewVR() {
     //         ssr: false,
     //     })
     } else {
+        // aframeのファイル
         ViewContent = dynamic(() => import("@/components/aframe/aframeTest"), {
             loading: () => <p>A content is loading</p>,
             ssr: false,

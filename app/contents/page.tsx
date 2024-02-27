@@ -2,14 +2,19 @@ import React from "react"
 import ViewVR from "@/components/aframe/viewVR"
 
 // ViewVRを呼び出す
-export default function Contents() {
-    // const searchParams = URLSearchParams()
-    // const contentName = GetContentName("contentName")
-    // console.log("contents: " + contentName)
+export default async function Contents({
+    params,
+    searchParams,
+}: {
+    params: {slug: string}
+    searchParams: { [key: string]: string | string[] | undefined }
+}) {
+    const srcType = searchParams.srcType
+    console.log("pageNum: " + srcType)
 
     return (
         <div>
-            <ViewVR />
+            { typeof srcType === "string" && <ViewVR srcType={srcType}/>}
         </div>
     )
 }
