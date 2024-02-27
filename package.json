@@ -9,11 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@types/aframe": "^1.2.5",
+    "@types/aframe": "^1.2.6",
     "aframe": "^1.5.0",
     "aframe-react": "^4.4.0",
     "leaflet": "^1.9.4",
-    "next": "^14.0.4",
+    "next": "^14.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-leaflet": "^4.2.1"
@@ -24,11 +24,11 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/react-leaflet": "^3.0.0",
-    "autoprefixer": "^10.0.1",
+    "autoprefixer": "^10.4.17",
     "eslint": "^8",
-    "eslint-config-next": "14.0.4",
+    "eslint-config-next": "14.1.0",
     "postcss": "^8",
-    "tailwindcss": "^3.3.0",
+    "tailwindcss": "^3.4.1",
     "typescript": "^5"
   },
   "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
