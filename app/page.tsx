@@ -45,15 +45,14 @@ export default function Home() {
       <br/>
 
 {/* LeafletによりOpenMapを表示 */}
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 md:w-full sm:w-full w-full">
-        {/* <iframe className="lg:w-full lg:aspect-video lg:mb-0 md:w-full md:aspect-video sm:w-full sm:aspect-video aspect-square" src="map-page"></iframe> */}
-        <div className="lg:w-full lg:aspect-video lg:mb-0 md:w-full md:aspect-video sm:w-full sm:aspect-video ">
-          <LoadMap />
+      <div className="mb-32 grid text-center xl:max-w-5xl lg:max-w-3xl w-full h-full">
+        <div className="mb-0 md:h-full sm:aspect-video aspect-square">
+          <LoadMap height="100%" width="100%"/>
         </div>
         <br/>
         <small>
-          <a href="map-page" className="inline-block rounded-lg bg-gray-200 mx-10 px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-1 ring-gray-900/10 hover:ring-gray-900/20">大きな地図を表示</a>
-          <button onClick={reloadPage} className="inline-block rounded-lg bg-gray-200 mx-10 px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-1 ring-gray-900/10 hover:ring-gray-900/20">ページ再読み込み</button>
+          <a href="map-page" className="inline-block rounded-lg bg-gray-200 md:mx-10 mx-3 px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-1 ring-gray-900/10 hover:ring-gray-900/20">大きな地図を表示</a>
+          <button onClick={reloadPage} className="inline-block rounded-lg bg-gray-200 md:mx-10 mx-3 px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-1 ring-gray-900/10 hover:ring-gray-900/20">ページ再読み込み</button>
         </small>
       </div>
 

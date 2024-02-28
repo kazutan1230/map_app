@@ -1,13 +1,16 @@
-import dynamic from "next/dynamic";
-import React from "react";
+import { GetServerSideProps } from 'next';
+import ServerComponent from '@/components/parts/serverComponent'
 
-// import { currentPos } from "../../components/map/currentPosition"
-
-// Mapを呼び出す
-export default function testPage() {
-    return (
-        <div>
-            <p>Hello World.</p>
-        </div>
-    )
+interface ServerPageProps {
+  id: string;
 }
+
+const ServerPage: React.FC<ServerPageProps> = ({ id }) => {
+  return (
+    <div>
+      <h1>サーバーコンポーネント</h1>
+      <p>URLから取得した値: {id}</p>
+      <ServerComponent id={id} />
+    </div>
+  );
+};
