@@ -1,22 +1,13 @@
-import dynamic from "next/dynamic";
-import React from "react";
-
-import Map from "../../components/map/map"
-// import { currentPos } from "../../components/map/currentPosition"
+import dynamic from "next/dynamic"
+import React from "react"
+import LoadMap from "@/components/map/loadMap"
 
 // Mapを呼び出す
 export default function MapPage() {
-    const Map = React.useMemo(
-        () =>
-        dynamic(() => import("../../components/map/map"), {
-            loading: () => <p>A map is loading</p>,
-            ssr: false,
-        }),
-        []
-    );
+
     return (
         <div>
-            <Map />
+            <LoadMap height="100svh" width="100svw"/>
         </div>
     )
 }

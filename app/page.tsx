@@ -1,9 +1,12 @@
 import Image from 'next/image'
+import Map from '@/components/map/map'
+import reloadPage from '@/components/parts/reloadPage'
+import LoadMap from '@/components/map/loadMap'
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
+    <main className="flex sm:min-h-screen flex-col items-center justify-between sm:p-24 p-8">
+      {/* <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
           Get started by editing&nbsp;
           <code className="font-mono font-bold">app/page.tsx</code>
@@ -26,7 +29,7 @@ export default function Home() {
             />
           </a>
         </div>
-      </div>
+      </div> */}
 
       <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
         <Image
@@ -39,18 +42,18 @@ export default function Home() {
         />
       </div>
 
-      <br></br>
-
-{/* GoogleMapの表示 */}
-      {/* <div className="mb-32 grid text-center">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1770.7688552730604!2d141.13673686877414!3d39.7995740016396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f85731c6547552b%3A0xd1a5faa6b4e8ba59!2z5rud5rKi5biCSVBV44Kk44OO44OZ44O844K344On44Oz44K744Oz44K_44O8!5e0!3m2!1sja!2sjp!4v1702455851174!5m2!1sja!2sjp"width="600" height="450" loading="lazy"></iframe>
-      </div> */}
+      <br/>
 
 {/* LeafletによりOpenMapを表示 */}
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 md:w-full sm:w-full">
-      {/* <iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=141.13453924655917%2C39.799028508510965%2C141.1400216817856%2C39.8012664206461&amp;layer=mapnik"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=18/39.80015/141.13728">大きな地図を表示</a></small> */}
-      {/* <iframe className="lg:w-full lg:aspect-video lg:mb-0 md:w-full md:aspect-video sm:w-full sm:aspect-video aspect-square" src="https://www.openstreetmap.org/export/embed.html?bbox=141.13453924655917%2C39.799028508510965%2C141.1400216817856%2C39.8012664206461&amp;layer=mapnik"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=18/39.80015/141.13728">大きな地図を表示</a></small> */}
-        <iframe className="lg:w-full lg:aspect-video lg:mb-0 md:w-full md:aspect-video sm:w-full sm:aspect-video aspect-square" src="map-page"></iframe><br/><small><a href="map-page">大きな地図を表示</a></small>
+      <div className="mb-32 grid text-center xl:max-w-5xl lg:max-w-3xl w-full h-full">
+        <div className="mb-0 md:h-full sm:aspect-video aspect-square">
+          <LoadMap height="100%" width="100%"/>
+        </div>
+        <br/>
+        <small>
+          <a href="map-page" className="inline-block rounded-lg bg-gray-200 md:mx-10 mx-3 px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-1 ring-gray-900/10 hover:ring-gray-900/20">大きな地図を表示</a>
+          <button onClick={reloadPage} className="inline-block rounded-lg bg-gray-200 md:mx-10 mx-3 px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-1 ring-gray-900/10 hover:ring-gray-900/20">ページ再読み込み</button>
+        </small>
       </div>
 
 {/* 以下は正味不要 */}
