@@ -1,6 +1,5 @@
 "use client"
 
-import 'aframe'
 import { Entity, Scene } from 'aframe-react'
 import React, { FC } from 'react'
 

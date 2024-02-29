@@ -1,62 +1,61 @@
 "use client"
-import "aframe"
+
 import { Entity, Scene } from "aframe-react"
 import React, { FC } from "react"
-import { registerComponent } from "aframe"
 
 // play-on-clickをEntityに登録。別の所に出したいかも。
-registerComponent('play-on-click', {
-    init: function () {
-        this.onClick = this.onClick.bind(this);
-    },
-    play: function () {
-        window.addEventListener('click', this.onClick);
-    },
-    pause: function () {
-        window.removeEventListener('click', this.onClick);
-    },
-    onClick: function () {
-        var videoEl = this.el.getAttribute('material').src;
-        if (!videoEl) { return; }
-        this.el.object3D.visible = true;
-        videoEl.play();
-    }
-})
+// registerComponent('play-on-click', {
+//     init: function () {
+//         this.onClick = this.onClick.bind(this);
+//     },
+//     play: function () {
+//         window.addEventListener('click', this.onClick);
+//     },
+//     pause: function () {
+//         window.removeEventListener('click', this.onClick);
+//     },
+//     onClick: function () {
+//         var videoEl = this.el.getAttribute('material').src;
+//         if (!videoEl) { return; }
+//         this.el.object3D.visible = true;
+//         videoEl.play();
+//     }
+// })
 
-// hide-on-playをEntityに登録。別の所に出したいかも。
-registerComponent('hide-on-play', {
-    schema: {type: 'selector'},
-    init: function () {
-      this.onPlaying = this.onPlaying.bind(this);
-      this.onPause = this.onPause.bind(this);
-      this.el.object3D.visible = !this.data.playing;
-    },
-    play: function () {
-      if (this.data) {
-        this.data.addEventListener('playing', this.onPlaying);
-        this.data.addEventListener('pause', this.onPause);
-      }
-    },
-    pause: function () {
-      if (this.data) {
-        this.data.removeEventListener('playing', this.onPlaying);
-        this.data.removeEventListener('pause', this.onPause);
-      }
-    },
-    onPlaying: function () {
-      this.el.object3D.visible = false;
-    },
-    onPause: function () {
-      this.el.object3D.visible = true;
-    }
-})
+// // hide-on-playをEntityに登録。別の所に出したいかも。
+// registerComponent('hide-on-play', {
+//     schema: {type: 'selector'},
+//     init: function () {
+//       this.onPlaying = this.onPlaying.bind(this);
+//       this.onPause = this.onPause.bind(this);
+//       this.el.object3D.visible = !this.data.playing;
+//     },
+//     play: function () {
+//       if (this.data) {
+//         this.data.addEventListener('playing', this.onPlaying);
+//         this.data.addEventListener('pause', this.onPause);
+//       }
+//     },
+//     pause: function () {
+//       if (this.data) {
+//         this.data.removeEventListener('playing', this.onPlaying);
+//         this.data.removeEventListener('pause', this.onPause);
+//       }
+//     },
+//     onPlaying: function () {
+//       this.el.object3D.visible = false;
+//     },
+//     onPause: function () {
+//       this.el.object3D.visible = true;
+//     }
+// })
 
 const MovieTest:FC = () => {
     function handleMoveHome() {
         window.location.href = "/"
     }
 
-    return (
+    return (        
         <div>
             <Scene className="absolute max-h-max max-w-full" vr-mode-ui="enterVRButton: #myEnterVRButton">
                 <Entity primitive="a-assets">
