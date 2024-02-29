@@ -27,7 +27,7 @@ export default function ViewVR(props: srcTypeProps) {
             loading: () => <p>A content is loading</p>,
             ssr: false,
         })
-    // urlは未実装
+    // // urlは未実装
     // } else if (srcType === "url") {
     //     ViewContent = dynamic(() => import("@/components/aframe/urlTest"), {
     //         loading: () => <p>A content is loading</p>,
@@ -45,7 +45,7 @@ export default function ViewVR(props: srcTypeProps) {
     // ViewContentを呼び出す
     return (
         <div>
-            <ViewContent />
+           <ViewContent />
         </div>
     )
 }
