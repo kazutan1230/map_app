@@ -2,53 +2,7 @@
 
 import { Entity, Scene } from "aframe-react"
 import React, { FC } from "react"
-
-// play-on-clickをEntityに登録。別の所に出したいかも。
-// registerComponent('play-on-click', {
-//     init: function () {
-//         this.onClick = this.onClick.bind(this);
-//     },
-//     play: function () {
-//         window.addEventListener('click', this.onClick);
-//     },
-//     pause: function () {
-//         window.removeEventListener('click', this.onClick);
-//     },
-//     onClick: function () {
-//         var videoEl = this.el.getAttribute('material').src;
-//         if (!videoEl) { return; }
-//         this.el.object3D.visible = true;
-//         videoEl.play();
-//     }
-// })
-
-// // hide-on-playをEntityに登録。別の所に出したいかも。
-// registerComponent('hide-on-play', {
-//     schema: {type: 'selector'},
-//     init: function () {
-//       this.onPlaying = this.onPlaying.bind(this);
-//       this.onPause = this.onPause.bind(this);
-//       this.el.object3D.visible = !this.data.playing;
-//     },
-//     play: function () {
-//       if (this.data) {
-//         this.data.addEventListener('playing', this.onPlaying);
-//         this.data.addEventListener('pause', this.onPause);
-//       }
-//     },
-//     pause: function () {
-//       if (this.data) {
-//         this.data.removeEventListener('playing', this.onPlaying);
-//         this.data.removeEventListener('pause', this.onPause);
-//       }
-//     },
-//     onPlaying: function () {
-//       this.el.object3D.visible = false;
-//     },
-//     onPause: function () {
-//       this.el.object3D.visible = true;
-//     }
-// })
+import GoToTopPage from "@/components/parts/goToTopPage"
 
 const MovieTest:FC = () => {
     function handleMoveHome() {
@@ -64,7 +18,6 @@ const MovieTest:FC = () => {
                         src="https://bitmovin-a.akamaihd.net/content/playhouse-vr/progressive.mp4"
                         // src="/src_private/osorezan.mp4"
                         preload="auto"
-                        // autoPlay
                         loop={true}
                         crossOrigin="anonymous"
                     />
@@ -75,8 +28,9 @@ const MovieTest:FC = () => {
                     visible="false"
                     play-on-click
                 />
-                <Entity
-                    primitive="a-camera">
+                    {/* cursor Entity VRモードだとrayorigin変える処理が必要かも。 */}
+                    <Entity
+                    primitive="a-camera" cursor="rayOrigin: mouse">
                     <Entity
                         position="0 0 -1.5"
                         text="align: center;
@@ -88,6 +42,9 @@ const MovieTest:FC = () => {
                             // value: クリック又はタップすると動画を再生します。"
                         hide-on-play="#video"
                     />
+                    {/* <Entity id="camera" camera="userHeight: 1.6" cursor="rayOrigin: mouse" /> */}
+                    {/* トップに飛ぶボタン */}
+                    <GoToTopPage />
                 </Entity>
             </Scene>
             <div className="absolute space-x-4 top-1 left-1">
