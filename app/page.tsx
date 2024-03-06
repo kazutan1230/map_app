@@ -51,7 +51,7 @@ export default function Home() {
         </div>
         <br/>
         <small>
-          <a href="map-page" className="inline-block rounded-lg bg-gray-200 md:mx-10 mx-3 px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-1 ring-gray-900/10 hover:ring-gray-900/20">大きな地図を表示</a>
+          <a href="map-page" className="inline-block rounded-lg bg-gray-200 md:mx-10 mx-3 px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-1 ring-gray-900/10 hover:ring-gray-900/20 mb-3">大きな地図を表示</a>
           <button onClick={reloadPage} className="inline-block rounded-lg bg-gray-200 md:mx-10 mx-3 px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-1 ring-gray-900/10 hover:ring-gray-900/20">ページ再読み込み</button>
         </small>
       </div>
