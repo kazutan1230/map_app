@@ -4,11 +4,7 @@ import { Entity, Scene } from "aframe-react"
 import React, { FC } from "react"
 import GoToTopPage from "@/components/parts/goToTopPage"
 
-type srcProps = {
-    src: string
-}
-
-const MovieTest:FC<srcProps> = ({ src }) => {
+const MovieTest:FC = () => {
     function handleMoveHome() {
         window.location.href = "/"
     }
@@ -19,8 +15,6 @@ const MovieTest:FC<srcProps> = ({ src }) => {
                 <Entity primitive="a-assets">
                     <video
                         id="video"
-                        // src={src}
-                        // Githubには100MB以上のfileは上げられないようなので、一旦、aframeのsampleを使う。
                         src="https://bitmovin-a.akamaihd.net/content/playhouse-vr/progressive.mp4"
                         // src="/src_private/osorezan.mp4"
                         preload="auto"
