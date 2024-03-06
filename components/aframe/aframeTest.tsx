@@ -2,12 +2,9 @@
 // aframeの機能を試すだけのコンポーネント
 
 import { Entity, Scene } from 'aframe-react'
-// import React, { FC, Component } from 'react'
-import React, { FC } from 'react'
-type srcProps = {
-    src: string
-}
-const AframeTest:FC<srcProps> = () => {
+import React, { FC, Component } from 'react'
+
+const AframeTest:FC = () => {
     return (
             <Scene className="absolute max-h-max max-w-full" vr-mode-ui="enterVRButton: #myEnterVRButton">
                 {/* <!-- 
