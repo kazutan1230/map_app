@@ -18,25 +18,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>{children}</body>
-        <Script
-          src="https://aframe.io/releases/1.5.0/aframe.min.js"
-        />
-        {/* Entityにイベントを設定するjs */}
-        <Script
-          src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"
-        />
-        <Script
-          src="js/play-on-click.js"
-          strategy="lazyOnload"
-        />
-        <Script
-          src="js/hide-on-play.js"
-          strategy="lazyOnload"
-        />
-        <Script
-          src="js/visible-on-play.js"
-          strategy="lazyOnload"
-        />
     </html>
   )
 }
