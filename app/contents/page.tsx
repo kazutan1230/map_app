@@ -10,7 +10,7 @@ export default async function Contents({
     searchParams: { [key: string]: string | string[] | undefined }
 }) {
     const srcType = searchParams.srcType
-    console.log("pageNum: " + srcType)
+    console.log("srcType: " + srcType)
 
     return (
         <div>
