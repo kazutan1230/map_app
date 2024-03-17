@@ -4,7 +4,11 @@ import { Entity, Scene } from 'aframe-react'
 import React, { FC } from 'react'
 import GoToTopPage from '@/components/parts/goToTopPage'
 
-const PhotoTest:FC = () => {
+type srcProps = {
+    src: string
+}
+
+const PhotoTest:FC<srcProps> = ({ src }) => {
     function handleMoveHome() {
         window.location.href = '/'
     }
@@ -14,7 +18,8 @@ const PhotoTest:FC = () => {
             <Scene className="absolute max-h-max max-w-full" vr-mode-ui="enterVRButton: #myEnterVRButton">
                 <Entity
                     primitive='a-sky'
-                    src='/src/360PhotoSphereCamera.jpg'
+                    src={src}
+                    // src='/src/360PhotoSphereCamera.jpg'
                     // src='/src/seaSide.jpg'
                 />
                 {/* cursor Entity VRモードだとrayorigin変える処理が必要かも。 */}
