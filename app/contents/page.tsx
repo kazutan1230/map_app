@@ -10,11 +10,13 @@ export default async function Contents({
     searchParams: { [key: string]: string | string[] | undefined }
 }) {
     const srcType = searchParams.srcType
+    const src = searchParams.src
     console.log("srcType: " + srcType)
+    console.log("src: " + src)
 
     return (
         <div>
-            { typeof srcType === "string" && <ViewVR srcType={srcType}/>}
+            { typeof srcType === "string" && typeof src === "string" && <ViewVR srcType={srcType} src={src}/>}
         </div>
     )
 }
