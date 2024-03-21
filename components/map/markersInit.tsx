@@ -16,7 +16,13 @@ export function MarkersInit() {
         <MarkerLabel coods={[39.6008191, 140.5612398]} str="滝角館 石黒家" srcType="img" src="/src/006_kakunodate.jpg" />
         <MarkerLabel coods={[39.8051589, 140.7607171]} str="乳頭温泉" srcType="img" src="/src/007_nyuto.jpg" />
         <MarkerLabel coods={[41.3245963, 141.0905963]} str="恐山" srcType="movie" src="/src/008_osorezan.mp4" />
+        <MarkerLabel coods={[39.647016, 141.9423927]} str="つつじが丘公園" srcType="img" src="/src/009_Miyako_Park.jpg" />
+        <MarkerLabel coods={[39.4391899, 141.9682084]} str="山田かき小屋" srcType="img" src="/src/010_Yamada_Seaside.jpg" />
+        <MarkerLabel coods={[39.007391, 141.6248461]} str="東日本大震災津波伝承館 (いわてTSUNAMI(つなみ)メモリアル)" srcType="img" src="/src/011_Memorial.jpg" />
+        <MarkerLabel coods={[39.005267, 141.632033]} str="名勝高田松原" srcType="img" src="/src/012_Takada_Seaside.jpg" />
+        <MarkerLabel coods={[39.003413, 141.625080]} str="奇跡の一本松" srcType="img" src="/src/013_Ipponmatsu.jpg" />
+        <MarkerLabel coods={[39.006212, 141.6291505]} str="道の駅高田松原" srcType="img" src="/src/014_Takada.jpg" />
         {/* <MarkerLabel coods={[, ]} str="" srcType="" src="" /> */}
-      </>
+        </>
       )
 }
