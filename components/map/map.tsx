@@ -16,7 +16,7 @@ type MapContanerProps = {
 const Map: FC<MapContanerProps> = ({ height, width }) => {
     const position : LatLngTuple = [39.799028508510965, 141.13453924655917];
     return (
-        <MapContainer center={position} zoom={12} scrollWheelZoom={true} style={{height: height, width: width}}>
+        <MapContainer center={position} zoom={9} scrollWheelZoom={true} style={{height: height, width: width}}>
             <TileLayer
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
