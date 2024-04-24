@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { Popup, Marker, useMap } from "react-leaflet";
+import React from "react"
 
 export function BackToTop() {
     // Topページを呼び出すbutton
