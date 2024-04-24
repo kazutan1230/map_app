@@ -10,8 +10,8 @@ export const Header = () => {
     }
 
     return (
-        <header className="flex h-14 mt-5">
-                <Link href="/" className="z-50 inline-block">
+        <header className="flex h-14">
+                <Link href="/" className="inline-block">
                     <Image
                         src="/Logo1.png"
                         alt="Logo1"
@@ -20,7 +20,7 @@ export const Header = () => {
                         height={100}
                     />
                 </Link>
-                <Link href="/" className="z-50 inline-block" >
+                <Link href="/" className="inline-block" >
                     <Image
                         src="/Logo2.png"
                         alt="Logo2"
@@ -29,19 +29,17 @@ export const Header = () => {
                         height={100}
                     />
                 </Link>
-                {/* <nav> */}
             <nav className={
-                // isOpen ? "z-40 text-left fixed bg-slate-50 right-0 top-0 w-2/12 h-screen flex flex-col justify-start pt-8 px-3"
-                isOpen ? "trasition duration-500 ease-in-out z-40 bg-blue-100 fixed top-0 right-0 bottom-100 left-0 h-1/2 flex flex-col"
-                : "fixed right-[-400%] md:right-[0%]"
+                isOpen ? "z-50 trasition duration-500 ease-in-out bg-blue-100 fixed top-0 right-0 bottom-100 left-0 h-1/2 flex flex-col"
+                : "fixed right-[-400%] md:right-[0%] md:z-50"
             }>
                 <ul className={
                     isOpen ? "flex h-screen justify-center items-center flex-col gap-6 text-xl" : "block"
                 }>
                     <li>
-                        <Link href="/" className="inline-block rounded-lg bg-gray-200 md:mx-10 mx-3 px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-1 ring-gray-900/10 hover:ring-gray-900/20 mb-3">Home</Link>
-                        <Link href="/login" className="inline-block rounded-lg bg-gray-200 md:mx-10 mx-3 px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-1 ring-gray-900/10 hover:ring-gray-900/20 mb-3">ログイン</Link>
-                        <Link href="/register" className="inline-block rounded-lg bg-gray-200 md:mx-10 mx-3 px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-1 ring-gray-900/10 hover:ring-gray-900/20 mb-3">アカウント登録</Link>
+                        <Link href="/" className="btn btn-primary mt-5 mx-3">Home</Link>
+                        <Link href="/login" className="btn btn-primary mx-3">ログイン</Link>
+                        <Link href="/register" className="btn btn-primary mx-3">アカウント登録</Link>
                     </li>
                 </ul>
             </nav>
