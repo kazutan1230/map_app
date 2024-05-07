@@ -39,7 +39,7 @@ export const Header = () => {
                     <li>
                         <Link href="/" className="btn btn-primary mt-5 mx-3">Home</Link>
                         <Link href="/login" className="btn btn-primary mx-3">ログイン</Link>
-                        <Link href="/register" className="btn btn-primary mx-3">アカウント登録</Link>
+                        <Link href="/signup" className="btn btn-primary mx-3">アカウント登録</Link>
                     </li>
                 </ul>
             </nav>
