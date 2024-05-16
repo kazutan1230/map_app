@@ -1,0 +1,47 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
+}
+
+datasource db {
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  extensions = [postgis]
+}
+
+model Media {
+  id         Int      @id @default(autoincrement())
+  name       String
+  type       String
+  filepath   String
+  location   Location @relation(fields: [locationId], references: [id])
+  locationId Int
+  srcType    SrcType  @relation(fields: [srcTypeId], references: [id])
+  srcTypeId  Int
+  user       User     @relation(fields: [userId], references: [id])
+  userId     Int
+  createdAt  DateTime @default(now()) @db.Timestamp(6)
+  updatedAt  DateTime @updatedAt @db.Timestamp(6)
+}
+
+model Location {
+  id       Int                                   @id @default(autoincrement())
+  name     String
+  address  String?
+  position Unsupported("geography(Point, 4326)")
+  Media    Media[]
+}
+
+model SrcType {
+  id    Int     @id @default(autoincrement())
+  type  String
+  Media Media[]
+}
+
+model User {
+  id    Int     @id @default(autoincrement())
+  name  String
+  email String  @unique
+  pass  String
+  Media Media[]
+}
