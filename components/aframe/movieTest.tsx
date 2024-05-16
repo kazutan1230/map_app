@@ -4,7 +4,11 @@ import { Entity, Scene } from "aframe-react"
 import React, { FC } from "react"
 import GoToTopPage from "@/components/parts/goToTopPage"
 
-const MovieTest:FC = () => {
+type srcProps = {
+    src: string
+}
+
+const MovieTest:FC<srcProps> = ({ src }) => {
     function handleMoveHome() {
         window.location.href = "/"
     }

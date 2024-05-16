@@ -4,7 +4,10 @@
 import { Entity, Scene } from 'aframe-react'
 import React, { FC, Component } from 'react'
 
-const AframeTest:FC = () => {
+type srcProps = {
+    src: string
+}
+const AframeTest:FC<srcProps> = ({ src }) => {
     return (
             <Scene className="absolute max-h-max max-w-full" vr-mode-ui="enterVRButton: #myEnterVRButton">
                 {/* <!-- 
