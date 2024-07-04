@@ -34,3 +34,7 @@ export const SignInSchema = z.object({
         .regex(/[0-9]/, "半角数字を入力してください")
         .trim(),
 })
+
+export const emailSchema = z.object({
+    email: z.string().email("メールアドレスを入力してください").trim(),
+})
