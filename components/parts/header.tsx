@@ -2,12 +2,16 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useState } from "react"
+import { useSession } from "next-auth/react"
+import { SignOut } from "@/components/auth/signOut"
 
 export const Header = () => {
     const [isOpen, setOpen] = useState(false)
     const handleMenuOpen = () => {
         setOpen(!isOpen)
     }
+    const session = useSession()
+    console.table(session)
 
     return (
         <header className="flex h-14">
@@ -38,7 +42,9 @@ export const Header = () => {
                 }>
                     <li>
                         <Link href="/" className="btn btn-primary mt-5 mx-3">Home</Link>
-                        <Link href="/login" className="btn btn-primary mx-3">ログイン</Link>
+                        {!session.data ? <Link href="/signin" className="btn btn-primary mx-3">ログイン</Link> : <SignOut/> }
+                        
+                        
                         <Link href="/signup" className="btn btn-primary mx-3">アカウント登録</Link>
                     </li>
                 </ul>

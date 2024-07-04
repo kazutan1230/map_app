@@ -5,9 +5,11 @@
 // import bcrypt from "bcrypt"
 // では駄目だった。
 import bcrypt from "bcryptjs"
-import { FormState, FormSchema } from "@/components/lib/definitions"
+import { FormState, FormSchema, emailSchema } from "@/components/lib/definitions"
 import prisma from "@/components/lib/prismaClient"
 import { isRegistered } from "@/components/lib/db"
+import { signIn } from "@/auth"
+import { isRedirectError } from "next/dist/client/components/redirect"
 
 export async function signUp(state : FormState, formData : FormData) {
     // 入力値の検証
@@ -59,6 +61,45 @@ export async function signUp(state : FormState, formData : FormData) {
         return{
             isSuccsess: false,
             message: "アカウントの作成に失敗しました。"
+        }
+    }
+}
+
+export async function validSignIn(state : FormState, formData : FormData) {
+    // 入力値の検証
+    const validatedFields = emailSchema.safeParse({
+        email: formData.get('email'),
+    })
+    // 入力値が非有効な場合、即返す。
+    if (!validatedFields.success) {
+        console.log("validatedFields" + validatedFields.success)
+        return {
+            errors: validatedFields.error.flatten().fieldErrors,
+        }
+    }
+    // ログインする。
+    try {
+        const options = {
+            email: formData.get('email'),
+            password: formData.get('password'),
+            // auth.jsでのsignInメソッドはredirectで必ずerrorを返すため、
+            // はなからredirectしない。
+            redirect: false,
+        }
+        await signIn("credentials", options)
+
+        // ログイン成功
+        return {
+            isSuccsess: true,
+            message: "ログインしました。",
+        }
+    } catch (error) {
+        if(isRedirectError(error)) {
+            throw error
+        }
+        return {
+            isSuccsess: false,
+            message: "メールアドレスまたはパスワードが間違っています。",
         }
     }
 }

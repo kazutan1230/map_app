@@ -21,7 +21,7 @@ export function SignupButton() {
     )
 }
 
-export default function SignupForm () {
+export default function SignUpForm () {
     const [state, action] = useFormState(signUp, undefined)
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
