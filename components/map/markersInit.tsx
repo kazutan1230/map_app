@@ -21,6 +21,7 @@ export function MarkersInit() {
         <MarkerLabel coods={[39.9546, 140.8539]} str="鏡沼 ドラゴンアイ" srcType="img" src="/src/011_dragoneye.jpg" />
         <MarkerLabel coods={[39.798917, 141.1391753]} str="馬コ in イノベーションセンター" srcType="img" src="/src/012_inovhorse.jpg" />
         <MarkerLabel coods={[40.0699, 140.3002]} str="上小阿仁村" srcType="img" src="/src/013_vilkamikoani.jpg" />
+        <MarkerLabel coods={[39.5237573, 141.1242044]} str="高橋農園" srcType="img" src="/src/014_takahashinoen.jpg" />
         {/* <MarkerLabel coods={[, ]} str="" srcType="" src="" /> */}
         </>
       )
