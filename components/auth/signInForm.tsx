@@ -13,7 +13,7 @@ export function SignInForm() {
     useEffect(() => {
         // 認証が成功した場合、リダイレクト
         if (state?.isSuccsess) {
-            router.push("/")
+            router.push("/signin/success")
         }
     }, [state, router])
 

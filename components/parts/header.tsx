@@ -10,7 +10,9 @@ export const Header = () => {
     const handleMenuOpen = () => {
         setOpen(!isOpen)
     }
-    const session = useSession()
+    const { data: session, status } = useSession()
+    console.log("headersession", session)
+    console.log("headerstatus", status)
     console.table(session)
 
     return (
@@ -42,7 +44,7 @@ export const Header = () => {
                 }>
                     <li>
                         <Link href="/" className="btn btn-primary mt-5 mx-3">Home</Link>
-                        {!session.data ? <Link href="/signin" className="btn btn-primary mx-3">ログイン</Link> : <SignOut/> }
+                        { status === "unauthenticated" ? <Link href="/signin" className="btn btn-primary mx-3">ログイン</Link> : <SignOut/> }
                         
                         
                         <Link href="/signup" className="btn btn-primary mx-3">アカウント登録</Link>
