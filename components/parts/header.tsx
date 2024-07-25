@@ -2,18 +2,18 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useState } from "react"
-import { useSession } from "next-auth/react"
 import { SignOut } from "@/components/auth/signOut"
+import { Session } from "next-auth"
 
-export const Header = () => {
+type HeaderProps = {
+    session: Session | null
+}
+
+export const Header: React.FC<HeaderProps> = ({session}) => {
     const [isOpen, setOpen] = useState(false)
     const handleMenuOpen = () => {
         setOpen(!isOpen)
     }
-    const { data: session, status } = useSession()
-    console.log("headersession", session)
-    console.log("headerstatus", status)
-    console.table(session)
 
     return (
         <header className="flex h-14">
@@ -44,10 +44,13 @@ export const Header = () => {
                 }>
                     <li>
                         <Link href="/" className="btn btn-primary mt-5 mx-3">Home</Link>
-                        { status === "unauthenticated" ? <Link href="/signin" className="btn btn-primary mx-3">ログイン</Link> : <SignOut/> }
-                        
-                        
-                        <Link href="/signup" className="btn btn-primary mx-3">アカウント登録</Link>
+                        { !session ?
+                            <>
+                                <Link href="/signin" className="btn btn-primary mx-3">ログイン</Link>
+                                <Link href="/signup" className="btn btn-primary mx-3">アカウント登録</Link>
+                            </> :
+                            <SignOut/>
+                        }
                     </li>
                 </ul>
             </nav>

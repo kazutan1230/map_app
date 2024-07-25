@@ -51,11 +51,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             if (user) {
                 token.sub = user.id
             }
-            // tokenの有効期限が1ヶ月位で設定方法が不明。
-            // if (token.exp) {
-            //     const date = new Date(token.exp * 1000)
-            //     console.log("date:"+ date)
-            // }
             // tokenを更新してjwtを返す ...に注意。
             return {
                 ...token,
@@ -64,18 +59,20 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         session({ session, token }) {
             if (typeof token.sub === "string") session.user.id = token.sub
             return session
-        }
+        },
+        // 使用できてないmethod
+        authorized: async( { request, auth } ) => {
+            return !!auth
+        },
     },
     session: {
         strategy: "jwt",
+        // JWTの有効期限を1日に設定する。
+        maxAge: 60 * 60 * 24,
     },
     pages: {
         signIn: "/signin",
     },
-    jwt: {
-        // JWTの有効期限を1日に設定してみたけど、反映されない
-        maxAge: 60 * 60 * 24,
-    }
 })
 
 
