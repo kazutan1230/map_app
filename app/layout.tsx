@@ -18,10 +18,14 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
   const session = await auth()
+  console.log("layoutsession", session)
+  
   return (
     <SessionProvider session={session}>
       <html lang="en">
-        <body className={inter.className}>{children}</body>
+        <body className={inter.className}>
+          {children}
+        </body>
           <Script
             src="https://aframe.io/releases/1.5.0/aframe.min.js"
           />

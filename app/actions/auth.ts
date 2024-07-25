@@ -51,7 +51,6 @@ export async function signUp(state : FormState, formData : FormData) {
                 pass: pwHash,
             },
         })
-        console.log(user)
         return{
             isSuccsess: true,
             message: "アカウントを作成しました。"

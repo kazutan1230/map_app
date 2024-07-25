@@ -1,16 +1,15 @@
-import { Header } from '@/components/parts/header'
 import reloadPage from '@/components/parts/reloadPage'
 import LoadMap from '@/components/map/loadMap'
 import Link from 'next/link'
-import { auth } from '@/auth'
 import React from 'react'
+import { Header } from '@/components/parts/header'
+import { auth } from '@/auth'
 
 export default async function Home() {
   const session = await auth()
-  // console.table(session)
   return (
     <div>
-      <Header />
+      <Header session={session} />
       <main className="flex sm:min-h-screen flex-col items-center justify-between p-8">
         {/* LeafletによりOpenMapを表示 */}
         <div className="grid text-center xl:max-w-5xl lg:max-w-3xl w-full h-full">
