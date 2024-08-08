@@ -4,45 +4,108 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
-  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+  provider   = "postgresql"
+  url        = env("POSTGRES_PRISMA_URL")
+  directUrl  = env("POSTGRES_URL_NON_POOLING")
   extensions = [postgis]
+}
+
+model User {
+  id    String @id @default(cuid())
+  name  String?
+  email String? @unique
+  emailVerified DateTime?
+  pass  String?
+  Media Media[]
+
+  accounts  Account[]
+  sessions  Session[]
+  // Optional for WebAuthn support
+  Authenticator Authenticator[]
+ 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Account {
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+ 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+ 
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+ 
+  @@id([provider, providerAccountId])
+}
+
+model Session {
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+ 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+ 
+  @@id([identifier, token])
+}
+
+// Optional for WebAuthn support
+model Authenticator {
+  credentialID         String  @unique
+  userId               String
+  providerAccountId    String
+  credentialPublicKey  String
+  counter              Int
+  credentialDeviceType String
+  credentialBackedUp   Boolean
+  transports           String?
+ 
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+ 
+  @@id([userId, credentialID])
 }
 
 model Media {
   id         Int      @id @default(autoincrement())
   name       String
-  type       String
   filepath   String
-  location   Location @relation(fields: [locationId], references: [id])
   locationId Int
-  srcType    SrcType  @relation(fields: [srcTypeId], references: [id])
   srcTypeId  Int
-  user       User     @relation(fields: [userId], references: [id])
-  userId     Int
   createdAt  DateTime @default(now()) @db.Timestamp(6)
   updatedAt  DateTime @updatedAt @db.Timestamp(6)
+  userId     String?
+  location   Location @relation(fields: [locationId], references: [id])
+  srcType    SrcType  @relation(fields: [srcTypeId], references: [id])
+  user       User?    @relation(fields: [userId], references: [id])
 }
 
 model Location {
-  id       Int                                   @id @default(autoincrement())
+  id       Int                      @id @default(autoincrement())
   name     String
   address  String?
-  position Unsupported("geography(Point, 4326)")
+  position Unsupported("geography")
   Media    Media[]
 }
 
 model SrcType {
   id    Int     @id @default(autoincrement())
   type  String
-  Media Media[]
-}
-
-model User {
-  id    Int     @id @default(autoincrement())
-  name  String
-  email String  @unique
-  pass  String
   Media Media[]
 }
