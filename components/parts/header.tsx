@@ -49,7 +49,10 @@ export const Header: React.FC<HeaderProps> = ({session}) => {
                                 <Link href="/signin" className="btn btn-primary mx-3">ログイン</Link>
                                 <Link href="/signup" className="btn btn-primary mx-3">アカウント登録</Link>
                             </> :
-                            <SignOut/>
+                            <>
+                                <Link href="/upload" className="btn btn-primary mx-3">コンテンツ投稿</Link>
+                                <SignOut/>
+                            </>
                         }
                     </li>
                 </ul>

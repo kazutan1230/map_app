@@ -21,7 +21,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
                     if (typeof email === "string" && typeof password === "string") {
                         const tmp = await getUser(email)
-                        if(tmp) {
+                        if(tmp !== null && tmp?.pass !== null) {
                             const isMatch = await bcrypt.compare(password, tmp.pass)
                             if (isMatch) {
                                 user = {
