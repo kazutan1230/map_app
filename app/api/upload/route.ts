@@ -70,7 +70,7 @@ export async function POST(req: Request) {
         console.log("mediacreateafter")
     }    
 
-    return Response.json({ ok: true })
+    return Response.json({uploadResult: response})
 }
 
 async function PostContents(body:Readonly<FormData>, uuid: UUID): Promise<Response> {
