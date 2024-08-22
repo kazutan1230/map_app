@@ -15,14 +15,14 @@ export async function POST(req: Request) {
         lat: formData.get('lat'),
         lng: formData.get('lng'),
     })
-    console.log("validatedFields", validatedFields.data)
     
-        // 入力値が非有効な場合、即返す。
-        if (!validatedFields.success) {
-            return {
-                errors: validatedFields.error.flatten().fieldErrors,
-            }
-        }
+    // 入力値が非有効な場合、即返す。
+    if (!validatedFields.success) {
+        return new Response(
+            JSON.stringify({ errors: validatedFields.error.flatten().fieldErrors }),
+            { status: 400, headers: { "Content-Type": "application/json" } }
+        )
+    }
 
     // ファイルのkey=filepathとしてuuid取得
     const uuid = randomUUID () as UUID
@@ -36,14 +36,12 @@ export async function POST(req: Request) {
     }
 
     if (await getLocationID(validatedFields.data.name) === null) {
-        console.log("locationcreatebefore")
         const location = await prisma.location.create({
             name: validatedFields.data.name,
             address: null,
             lat: validatedFields.data.lat,
             lng: validatedFields.data.lng,
         })
-        console.log("locationcreateafter")
     }
         
     if (await getSrcTypeID(validatedFields.data.srcType) === null) {
@@ -58,7 +56,6 @@ export async function POST(req: Request) {
     const SrcTypeID = await getSrcTypeID(validatedFields.data.srcType)
 
     if (LocationID !== null && SrcTypeID !== null) {
-        console.log("mediacreatebefore")
         const media = await prisma.media.create({
             name: validatedFields.data.name,
             filepath: uuid as string,
@@ -67,10 +64,12 @@ export async function POST(req: Request) {
             userId: null,
             updatedAt: new Date(),
         })
-        console.log("mediacreateafter")
     }    
 
-    return Response.json({uploadResult: response})
+    return new Response(
+        JSON.stringify({ uploadResult: response }),
+        { status: 200, headers: { "Content-Type": "application/json" } }
+    )
 }
 
 async function PostContents(body:Readonly<FormData>, uuid: UUID): Promise<Response> {
@@ -90,5 +89,8 @@ async function PostContents(body:Readonly<FormData>, uuid: UUID): Promise<Respon
     })
 
     const uploadResult = await s3Client.send(command)
-    return Response.json({uploadResult})
+    return new Response(
+        JSON.stringify({ uploadResult }),
+        { status: 200, headers: { "Content-Type": "application/json" } }
+    )
 }
