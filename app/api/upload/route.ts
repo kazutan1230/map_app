@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server"
+// import { NextResponse } from "next/server"
 import { UploadFormSchema } from "@/components/lib/definitions"
 import { s3Client } from "@/components/lib/s3client"
 import { PutObjectCommand } from "@aws-sdk/client-s3"
@@ -70,7 +70,7 @@ export async function POST(req: Request) {
         console.log("mediacreateafter")
     }    
 
-    return NextResponse.json({ ok: true })
+    return Response.json({ ok: true })
 }
 
 async function PostContents(body:Readonly<FormData>, uuid: UUID): Promise<Response> {
