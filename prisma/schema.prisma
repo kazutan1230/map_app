@@ -1,6 +1,6 @@
 generator client {
   provider        = "prisma-client-js"
-  previewFeatures = ["postgresqlExtensions"]
+  previewFeatures = ["postgresqlExtensions", "driverAdapters"]
 }
 
 datasource db {
@@ -100,7 +100,7 @@ model Location {
   id       Int                      @id @default(autoincrement())
   name     String
   address  String?
-  position Unsupported("geography")
+  position Unsupported("geography(Point,4326)")
   Media    Media[]
 }
 

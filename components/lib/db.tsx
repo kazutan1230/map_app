@@ -32,3 +32,38 @@ export const getUser = async (email: string) => {
         return null
     }
 }
+
+// 既に登録されているいるlocationか確認してidを返す。登録されていなければnullを返す。
+export const getLocationID = async (name: string, ) => {
+    try {
+        const location = await prisma.location.findFirst({
+            where: {
+                name: name
+            }
+        })
+        if (location) {
+            return location.id
+        } else {
+            return null
+        }
+    } catch {
+        return null
+    }
+}
+
+export const getSrcTypeID = async (type: string, ) => {
+    try {
+        const srcType = await prisma.srcType.findFirst({
+            where: {
+                type: type
+            }
+        })
+        if (srcType) {
+            return srcType.id
+        } else {
+            return null
+        }
+    } catch {
+        return null
+    }
+}
