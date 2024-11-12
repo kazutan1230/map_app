@@ -39,7 +39,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                         throw new Error("メールアドレス又はパスワードが間違っています。")
                     }                    
                     console.log(user)
-                    return user
+                    return new Promise((resolve) => setTimeout(() => resolve(user), 1000))
                 } catch (error) {
                     return null
                 }

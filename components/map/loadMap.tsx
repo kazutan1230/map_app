@@ -1,13 +1,15 @@
+"use client"
+
 import dynamic from "next/dynamic";
 import React from "react";
 
-type MapContanerProps = {
+type MapContainerProps = {
     height: string
     width: string
 }
 
 // Mapを動的に呼び出す
-export default function LoadMap({ height, width }: MapContanerProps) {
+export default function LoadMap({ height, width }: MapContainerProps) {
     const Map = React.useMemo(
         () =>
         dynamic(() => import("@/components/map/map"), {

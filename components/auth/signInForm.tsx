@@ -1,11 +1,10 @@
 "use client"
 import { validSignIn } from "@/app/actions/auth"
-import { useFormState } from "react-dom"
-import { useState,useEffect } from "react"
+import { useState,useEffect, useActionState } from "react"
 import { useRouter } from "next/navigation"
 
 export function SignInForm() {
-    const [state, action] = useFormState(validSignIn, undefined)
+    const [state, action] = useActionState(validSignIn, undefined)
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const router = useRouter()

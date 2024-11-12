@@ -1,9 +1,10 @@
 "use client"
 
+import { useActionState } from "react"
 import type { Contents } from "@/interfaces/contents"
 import { useRouter } from "next/navigation"
 import { useForm } from "react-hook-form"
-import { useFormState, useFormStatus } from "react-dom"
+import { useFormStatus } from "react-dom"
 
 export function UploadForm(): React.JSX.Element {
     const srcType: { name:string, display:string}[] = [
@@ -17,7 +18,7 @@ export function UploadForm(): React.JSX.Element {
         // handleSubmit
     } = useForm<Contents>()
     const router = useRouter()
-    const [state, action ] = useFormState(
+    const [state, action ] = useActionState(
         sendData,
         new FormData(),
         // upload,

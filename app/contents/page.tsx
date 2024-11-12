@@ -9,8 +9,7 @@ export default async function Contents({
     params: {slug: string}
     searchParams: { [key: string]: string | string[] | undefined }
 }) {
-    const srcType = searchParams.srcType
-    const src = searchParams.src
+    const {srcType, src} = await searchParams
     console.log("srcType: " + srcType)
     console.log("src: " + src)
 
