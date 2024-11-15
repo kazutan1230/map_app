@@ -1,0 +1,89 @@
+name: Build and Deploy to AWS Lambda
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  push:
+    branches: main
+    paths:
+      - "app/**"
+      - "public/**"
+      - "package-lock.json"
+      - "Dockerfile"
+      - "package.json"
+      - "*config.*"
+  workflow_dispatch:
+    inputs:
+      no-cache:
+        description: "Build docker images with no cache"
+        default: false
+        required: false
+        type: boolean
+
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  AWS_REGION: ap-northeast-1
+  ECR_REPOSITORY: ${{ github.event.repository.name }}
+  LAMBDA_FUNCTION_NAME: ${{ github.event.repository.name }}
+
+jobs:
+  lambda:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    if: github.repository_owner == 'kazutan1230'
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v3
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ env.AWS_REGION }}
+
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v2
+
+    - name: Get an old ImageTag
+      run: |
+        echo "OLD_IMAGE_TAG=$(aws ecr list-images --repository-name $ECR_REPOSITORY \
+        --query 'imageIds[0].imageTag' --output text)" >> $GITHUB_ENV
+
+    - name: Build and Push
+      uses: docker/build-push-action@v6
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        context: .
+        no-cache: ${{ inputs.no-cache == true }}
+        platforms: linux/arm64
+        provenance: false
+        push: true
+        tags: ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ github.sha }}
+
+    - name: Update Lambda Function
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        IMAGE_TAG: ${{ github.sha }}
+      run: |
+        aws lambda update-function-code --function-name $LAMBDA_FUNCTION_NAME \
+        --architectures arm64 --image-uri $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
+    - name: Delete an old Image
+      run: |
+        aws ecr batch-delete-image --repository-name $ECR_REPOSITORY \
+        --image-ids imageTag=$OLD_IMAGE_TAG
