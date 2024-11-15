@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 .yarn/install-state.gz
+.env
 
 # testing
 /coverage
@@ -37,3 +38,7 @@ next-env.d.ts
 
 # contents
 /public/src_private
+
+# prisma
+/prisma/migrations
+/prisma/old
