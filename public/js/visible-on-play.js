@@ -4,7 +4,7 @@ AFRAME.registerComponent('visible-on-play', {
   init: function () {
     this.onPlaying = this.onPlaying.bind(this);
     this.onPause = this.onPause.bind(this);
-    this.el.object3D.visible = this.data.playing || false;
+    // this.el.object3D.visible = this.data.playing || false;
   },
   play: function () {
     if (this.data) {

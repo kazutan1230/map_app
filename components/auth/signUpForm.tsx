@@ -1,7 +1,7 @@
 "use client"
-import { useFormState, useFormStatus } from "react-dom"
+import { useFormStatus } from "react-dom"
 import { signUp } from "@/app/actions/auth"
-import { useState } from "react"
+import { useState, useActionState } from "react"
 
 async function onSubmit() {
     console.log("onSubmit")
@@ -22,7 +22,7 @@ export function SignupButton() {
 }
 
 export default function SignUpForm () {
-    const [state, action] = useFormState(signUp, undefined)
+    const [state, action] = useActionState(signUp, undefined)
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
