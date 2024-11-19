@@ -7,9 +7,9 @@ FROM base AS deps
 EXPOSE 3000
 COPY ./ /app/
 RUN npm -v && \
-    apt update && \
-    apt install git-all -y && \
-    apt upgrade openssl -y && \
+    apt-get update -y && \
+    apt-get install -y git-all && \
+    apt-get install -y openssl && \
     npm install -g npm@latest && \
     npm install
 
