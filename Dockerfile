@@ -17,9 +17,7 @@ RUN npm -v && \
 FROM base AS builder
 COPY --from=deps /app/node_modules ./node_modules
 COPY ./ ./
-RUN apt-get update -y && \
-    apt-get install -y openssl && \
-    npm run build
+RUN npm run aws-build
 
 # 本番環境
 FROM base AS runner
