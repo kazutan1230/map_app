@@ -9,6 +9,7 @@ COPY ./ /app/
 RUN npm -v && \
     apt update && \
     apt install git-all -y && \
+    apt upgrade openssl -y && \
     npm install -g npm@latest && \
     npm install
 
