@@ -7,7 +7,6 @@
     "build": "prisma generate && next build",
     "start": "next start",
     "vercel-build": "prisma generate && prisma migrate deploy && next build",
-    "aws-build": "prisma generate && rm -rf node_modules/.prisma/client/debian-openssl-3.0.x && prisma migrate deploy && next build",
     "lint": "next lint"
   },
   "dependencies": {

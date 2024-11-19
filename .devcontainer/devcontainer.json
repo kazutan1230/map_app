@@ -1,9 +1,9 @@
 {
     "name": "map_app",
-    "build": {
-        "dockerfile": "../Dockerfile"
-    },
+    "image": "mcr.microsoft.com/devcontainers/typescript-node:dev-22",
     "forwardPorts": [3000],
+    "remoteUser": "root",
+    "postStartCommand": "npm run dev",
     "customizations": {
       "vscode": {
         "extensions": [
