@@ -17,7 +17,7 @@ RUN npm -v && \
 FROM base AS builder
 COPY --from=deps /app/node_modules ./node_modules
 COPY ./ ./
-RUN npm run aws-build
+RUN npm run build
 
 # 本番環境
 FROM base AS runner
