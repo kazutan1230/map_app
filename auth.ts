@@ -7,6 +7,9 @@ import { getUser } from "@/components/lib/db"
 import { SignInSchema } from "@/components/lib/definitions"
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+    // https://authjs.dev/getting-started/deployment#docker
+    // でdockerを使う場合、以下に設定せよとのことなので、入れてみる。
+    trustHost: true,
     providers: [
         Credentials({
             credentials: {
