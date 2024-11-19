@@ -7,17 +7,17 @@ FROM base AS deps
 EXPOSE 3000
 COPY ./ /app/
 RUN npm -v && \
-    apt-get update -y && \
-    apt-get install -y git-all && \
-    apt-get install -y openssl && \
     npm install -g npm@latest && \
     npm install
-
 # ビルド
 FROM base AS builder
 COPY --from=deps /app/node_modules ./node_modules
 COPY ./ ./
-RUN npm run build
+RUN apt-get update -y && \
+    apt-get install -y openssl && \
+    apt-get upgrade -y openssl && \
+    openssl version && \
+    npm run build
 
 # 本番環境
 FROM base AS runner
