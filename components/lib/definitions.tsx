@@ -1,4 +1,4 @@
-import { z, ZodObject } from "zod"
+import { z } from "zod"
 
 const IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png", "movie/mp4"]
 const IMAGE_SIZE_LIMIT = 5 * 1024 * 1024
