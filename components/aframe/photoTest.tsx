@@ -19,8 +19,6 @@ const PhotoTest:FC<srcProps> = ({ src }) => {
                 <Entity
                     primitive='a-sky'
                     src={src}
-                    // src='/src/360PhotoSphereCamera.jpg'
-                    // src='/src/seaSide.jpg'
                 />
                 {/* cursor Entity VRモードだとrayorigin変える処理が必要かも。 */}
                 <Entity id="camera" camera="userHeight: 1.6" cursor="rayOrigin: mouse" />
