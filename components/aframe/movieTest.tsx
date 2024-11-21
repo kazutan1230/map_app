@@ -19,8 +19,8 @@ const MovieTest:FC<srcProps> = ({ src }) => {
                 <Entity primitive="a-assets">
                     <video
                         id="video"
-                        src="https://bitmovin-a.akamaihd.net/content/playhouse-vr/progressive.mp4"
-                        // src={src}
+                        // src="https://bitmovin-a.akamaihd.net/content/playhouse-vr/progressive.mp4"
+                        src={src}
                         // src="/src_private/osorezan.mp4"
                         preload="auto"
                         loop={true}
