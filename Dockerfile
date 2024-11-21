@@ -15,7 +15,6 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY ./ ./
 RUN apt-get update -y && \
     apt-get install -y openssl && \
-    openssl version && \
     npm run build
 
 # 本番環境
@@ -28,8 +27,7 @@ COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 RUN apt-get update -y && \
-    apt-get install -y openssl && \
-    openssl version
+    apt-get install -y openssl
 EXPOSE 3000
 ENV PORT 3000
 CMD ["node", "server.js"]
