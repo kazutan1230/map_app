@@ -4,7 +4,7 @@ export function SignOut() {
     return (
         <button
             className="btn btn-primary"
-            onClick={() => signOut({ callbackUrl: "/", redirect: true })}
+            onClick={() => {signOut({ redirectTo: "/", redirect: true })}}
         >
             ログアウト
         </button>
