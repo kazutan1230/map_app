@@ -13,6 +13,10 @@ RUN npm -v && \
 FROM base AS builder
 COPY --from=deps /app/node_modules ./node_modules
 COPY ./ ./
+# Create .env.production
+ARG NEXT_PUBLIC_CLOUDFRONT_URL
+RUN touch .env.production && \
+    echo "NEXT_PUBLIC_CLOUDFRONT_URL=$NEXT_PUBLIC_CLOUDFRONT_URL" >> .env.production
 RUN apt-get update -y && \
     apt-get install -y openssl && \
     npm run build
