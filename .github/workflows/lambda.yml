@@ -75,6 +75,8 @@ jobs:
         provenance: false
         push: true
         tags: ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ github.sha }}
+        build-args: |
+          "NEXT_PUBLIC_CLOUDFRONT_URL=${{ vars.NEXT_PUBLIC_CLOUDFRONT_URL }}"
 
     - name: Update Lambda Function
       env:
