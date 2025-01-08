@@ -9,7 +9,7 @@ import { FormState, FormSchema, emailSchema } from "@/components/lib/definitions
 import prisma from "@/components/lib/prismaClient"
 import { isRegistered } from "@/components/lib/db"
 import { signIn } from "@/auth"
-import { isRedirectError } from "next/dist/client/components/redirect"
+import { isRedirectError } from "next/dist/client/components/redirect-error"
 
 export async function signUp(state : FormState, formData : FormData) {
     // 入力値の検証
