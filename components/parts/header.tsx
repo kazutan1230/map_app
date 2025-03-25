@@ -42,8 +42,8 @@ export const Header: React.FC<HeaderProps> = ({session}) => {
                 <ul className={
                     isOpen ? "flex h-screen justify-center items-center flex-col gap-6 text-xl" : "block"
                 }>
-                    <li>
-                        <Link href="/" className="btn btn-primary mt-5 mx-3">Home</Link>
+                    <li className="mt-3">
+                        <Link href="/" className="btn btn-primary mx-3">Home</Link>
                         { !session ?
                             <>
                                 <Link href="/signin" className="btn btn-primary mx-3">ログイン</Link>
